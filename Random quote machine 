@@ -1,0 +1,15 @@
+```javascript
+
+const affirmations = ["You'll make it ","You are increasing","You can't fail","All is well","The worst has already happened and the best is yet to come","You've gat this","Opportunity is looking for you","You go from glory to glory","You are shinning","You are blessed","You don't lack any good thing","Head and not the tail","you're a winner","you're intelligent","you are special","you are loved","that sickness won't kill you","there's great ideas inside of you","you will not struggle","your family is blessed"]
+
+const tellMeThat = () => {
+  const displayAffrms = Math.floor(Math.random() * affirmations.length)
+  return affirmations[displayAffrms]
+  
+}
+const affrmsDisplay = setInterval(() => {
+
+  console.log(tellMeThat())
+  
+  }, 2000);
+affrmsDisplay```
