@@ -1,0 +1,21 @@
+const readline = require('readline');
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+
+const madeUpAlphabet = 'æ1ç2£34#ī✓{|πñøqp®$√ū∆~*¥5 '; // added an extra space at the end
+const standardAlphabet = 'abcdefghijklmnopqrstuvwxyz';
+
+rl.question('Enter a string: ', (input) => {
+let result = '';
+for (let i = 0; i
+const char = input[i].toLowerCase();
+const index = standardAlphabet.indexOf(char);
+if (index !== -1) {
+result += madeUpAlphabet[index];
+} else {
+result += char;
+}
+}
+console.log(result);
+rl.close();
+});
+
