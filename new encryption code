@@ -6,7 +6,7 @@ const standardAlphabet = 'abcdefghijklmnopqrstuvwxyz';
 
 rl.question('Enter a string: ', (input) => {
 let result = '';
-for (let i = 0; i
+for (let i = 0; i < input.length; i++) {
 const char = input.trim()[i].toLowerCase();
 const index = standardAlphabet.indexOf(char);
 if (index !== -1) {
