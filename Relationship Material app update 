@@ -1,0 +1,144 @@
+
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+const totalScore = () => {
+  rl.question('How much do you make? ', (monthlyIncome) => {
+    rl.question('What about extra money? ', (additionalIncome) => {
+      rl.question('Do you like learning new things? ', (teachable) => {
+        rl.question('Are you a big reader? ', (reader) => {
+          rl.question('Are you a believer? ', (isABeliever) => {
+            rl.question('Are you serving in church? ', (srvnInChrch) => {
+              rl.question('How long do you sleep? ', (hoursOfSleep) => {
+                rl.question('How many hours do you spend improving yourself? ', (onSlfImpvmnt) => {
+                  rl.question('What are some hobbies of yours? ', (yourHobbies) => {
+                    let totalPoints = 0;
+
+                    const finances = () => {
+                      let score = 0;
+                      switch (true) {
+                        case monthlyIncome >= 50000:
+                          score += 10;
+                          totalPoints += 10;
+                          break;
+                        default:
+                          score -= 2;
+                          totalPoints -= 2;
+                      }
+                      switch (true) {
+                        case additionalIncome >= 20000:
+                          score += 10;
+                          totalPoints += 10;
+                          break;
+                        default:
+                          score -= 2;
+                          totalPoints -= 2;
+                      }
+                      console.log('Financial score: ' + score);
+                    };
+                    finances();
+
+                    const intelligence = () => {
+                      let score = 0;
+                      switch (reader) {
+                        case 'yes':
+                          score += 10;
+                          totalPoints += 10;
+                          break;
+                        default:
+                          score -= 2;
+                          totalPoints -= 2;
+                      }
+                      switch (teachable) {
+                        case 'yes':
+                          score += 10;
+                          totalPoints += 10;
+                          break;
+                        default:
+                          score -= 2;
+                          totalPoints -= 2;
+                      }
+                      console.log('Intelligence score: ' + score);
+                    };
+                    intelligence();
+
+                    const believer = () => {
+                      let score = 0;
+                      switch (isABeliever) {
+                        case 'yes':
+                          score += 10;
+                          totalPoints += 10;
+                          break;
+                        default:
+                          score -= 2;
+                          totalPoints -= 2;
+                      }
+                      switch (srvnInChrch) {
+                        case 'yes':
+                          score += 10;
+                          totalPoints += 10;
+                          break;
+                        default:
+                          score -= 2;
+                          totalPoints -= 2;
+                      }
+                      console.log('Faith score: ' + score);
+                    };
+                    believer();
+
+                    const workEthic = () => {
+                      let score = 0;
+                      switch (true) {
+                        case hoursOfSleep < 6 && onSlfImpvmnt > 5:
+                          score += 20;
+                          totalPoints += 20;
+                          break;
+                        default:
+                          score -= 5;
+                          totalPoints -= 5;
+                      }
+                      console.log('Work ethic score: ' + score);
+                    };
+                    workEthic();
+
+                    const hobbies = () => {
+                      let score = 0;
+                      switch (yourHobbies) {
+                        case "chess":
+                        case "music":
+                        case "building projects":
+                        case "writing":
+                          score += 20;
+                          totalPoints += 20;
+                          break;
+                        default:
+                          score -= 5;
+                          totalPoints -= 5;
+                      }
+                      console.log('Hobbies score: ' + score);
+                    };
+                    hobbies();
+
+                    console.log('Total points: ' + totalPoints);
+                    let relMat = totalPoints;
+                    if (relMat >= 57) {
+                      console.log('RELATIONSHIP MATERIAL');
+                    } else {
+                      console.log('NOT RELATIONSHIP MATERIAL');
+                    }
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+};
+
+totalScore();
