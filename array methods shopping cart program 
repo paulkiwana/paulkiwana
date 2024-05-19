@@ -1,0 +1,41 @@
+```javascript
+
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+const ogCart = ["eggs", "bread", "milk", "toilet paper", "coffee", "toothpaste"];
+
+console.log("The original cart:");
+console.log(ogCart);
+
+const newCart = () => {
+  rl.question('What do you want to add to your cart? ', (picked) => {
+    rl.question('What item do you want to put back on the shelf? ', (putBack) => {
+      rl.question('Which item do you want to take from the bottom of the cart? ', (shifted) => {
+        rl.question('What item do you want to put at the bottom of the cart? ', (unshifted) => {
+          rl.question('What item do you want to replace in the middle of the cart? ', (spliced) => {
+            rl.question('What item do you want to replace after the previous replacement? ', (splicedAgain) => {
+              ogCart.pop(); // Remove the item put back on the shelf
+              ogCart.push(picked); // Add the picked item to the cart
+              ogCart.shift(); // Remove the item at the bottom of the cart
+              ogCart.unshift(unshifted); // Put a new item at the bottom of the cart
+              ogCart.splice(1, 1, spliced); // Replace an item in the middle of the cart
+              ogCart.splice(2, 1, splicedAgain); // Replace another item in the middle of the cart
+              
+              console.log("The new cart:");
+              console.log(ogCart); // Print the updated cart
+
+              rl.close();
+            });
+          });
+        });
+      });
+    });
+  });
+}
+
+newCart();```
