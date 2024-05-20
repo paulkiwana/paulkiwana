@@ -1,0 +1,34 @@
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.setPrompt('You: ');
+rl.prompt();
+
+const responses = {
+  hello: () => console.log('Bot: Hi there!'),
+  bye: () => {
+    console.log('Bot: Goodbye!');
+    rl.close();
+  },
+  question: (question, answer) => {
+    console.log(`Bot: Your answer to "${question}" is "${answer}"`);
+  }
+};
+
+rl.on('line', (input) => {
+  const command = input.trim().toLowerCase();
+  if (responses.hasOwnProperty(command)) {
+    responses[command](input);
+  } else {
+    console.log('Bot: I did not understand that.');
+  }
+  
+  rl.prompt();
+}).on('close', () => {
+  console.log('Exiting bot.');
+  process.exit(0);
+});
