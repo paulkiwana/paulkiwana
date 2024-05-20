@@ -1,0 +1,25 @@
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.setPrompt('You: ');
+rl.prompt();
+
+rl.on('line', (input) => {
+  if (input.trim().toLowerCase() === 'hello') {
+    console.log('Bot: Hi there!');
+  } else if (input.trim().toLowerCase() === 'bye') {
+    console.log('Bot: Goodbye!');
+    rl.close();
+  } else {
+    console.log('Bot: I did not understand that.');
+  }
+  
+  rl.prompt();
+}).on('close', () => {
+  console.log('Exiting bot.');
+  process.exit(0);
+});
