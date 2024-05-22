@@ -1,0 +1,23 @@
+const voted = {};
+voted.ed = true
+voted.gwen = true
+voted.peter = true
+voted.mike = true
+function checkVoter(name) {
+  if (voted[name]) {
+    console.log(`kick ${name} out!`);
+  } else {
+    voted[name] = true;
+    console.log(`let ${name} vote!`);
+   
+  }
+}
+
+checkVoter("tom"); // Output: let them vote!
+checkVoter("mike");
+checkVoter("Genevieve")
+checkVoter("peter")
+checkVoter("ed")
+checkVoter("violetta")
+checkVoter("tom")
+checkVoter("Genevieve")//Genevieve & tom will be kicked out because she already voted when she was allowed 
