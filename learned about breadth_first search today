@@ -1,0 +1,38 @@
+function personIsSeller(name) {
+    return name.endsWith('m');
+}
+const graph = {}
+
+graph['paul'] = ['vicky','sandra','scarlet']
+graph['vicky'] = ['jerome','jime','gwen']
+graph['sandra'] =['trudy','george']
+graph['scarlet'] = ['wendy','gwen']
+graph['wendy'] = ['tam']
+graph['jerome'] = []
+graph['boy'] = []
+graph['jime'] = ['pame']
+graph['pame'] = []
+graph['trudy'] = []
+graph['george'] = []
+graph['tam'] = []
+graph['gwen'] = []
+
+function search(name, graph) {
+    let searchQueue = [];
+    searchQueue.push(...graph[name]);
+searched = []
+    while (searchQueue.length > 0) {
+        let person = searchQueue.shift();
+     if(!searched.includes(person)){
+      if (personIsSeller(person)) {
+            console.log(person + " is a mango seller!");
+            return true;
+        } else {
+            searchQueue.push(...graph[person]);
+          searched.push(person)
+        }
+       }
+    }
+    return false;
+}
+search("paul",graph)
