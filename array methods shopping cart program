@@ -1,0 +1,44 @@
+
+
+const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin, 
+  output: process.stdout});
+
+const ogCart = ["eggs","bread","milk","toilet paper","coffee","toothpaste"];
+
+console.log("The original cart contents");
+console.log(ogCart);
+
+const newCart = () => {
+  rl.question("What do you want to add to the top of cart? ", (picked) => { 
+    rl.question("What item do you want to remove from the top of the cart? ", (putBack) => {
+      rl.question("what item do you want to take from the bottom of the cart? ", (shifted)=> {
+        rl.question("what item do you want to add to the bottom of the cart? ", (unshifted) => {
+          rl.question("Replace an item in the middle of the cart? ", (spliced) => {
+            rl.question("Replace another item in the middle of the cart? ", (splicedAgain) => {
+              rl.question("Replace another item ", (oneMoreSplice) => {
+                rl.question("one last item ", (lastItem) => {
+                  ogCart.pop();
+                  ogCart.push(picked);
+                  ogCart.shift();
+                  ogCart.unshift(unshifted);
+                  ogCart.splice(1, 1, spliced)
+                  ogCart.splice(2, 1, splicedAgain);
+                  ogCart.splice(3, 1, oneMoreSplice);
+                  ogCart.splice(4, 1, lastItem);
+
+                  console.log("The new cart");
+                  console.log(ogCart);
+                 
+                  rl.close();
+                })
+              }) 
+            });
+          });
+        });
+      });
+     }); 
+  });  
+}
+newCart()
